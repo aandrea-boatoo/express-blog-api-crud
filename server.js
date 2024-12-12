@@ -6,6 +6,14 @@ const postRouter = require('./route/postRoute.js');
 // Asset statici
 app.use(express.static('public'));
 
+// GESTIONE ERRORI
+const errorsHandler = require("./middlewares/errorHandler.js");
+const errorNotFound = require("./middlewares/errorNotFound.js");
+const corsPolicy = require("./middlewares/corsPolicy.js");
+
+app.use(corsPolicy);
+app.use(errorsHandler);
+app.use(notFound);
 
 // Rotte
 app.get('/', (req, res) => {
@@ -15,6 +23,7 @@ app.get('/', (req, res) => {
 
 // COLLEGAMENTO ROUTERS
 app.use('/posts', postRouter);
+
 
 // Json BODY
 app.use(express.json());
