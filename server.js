@@ -39,9 +39,6 @@ app.get('/bacheca', (req, res) => {
     res.json(response);
 })
 
-app.all('*', (req, res) => {
-    res.status(404).send('<h1>Pages not found(error404)</h1>');
-})
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)
